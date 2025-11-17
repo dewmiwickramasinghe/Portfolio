@@ -33,13 +33,13 @@ export default function Hero(){
               </button>
             <div className="socials">
               <a className="s" href="https://web.facebook.com/anshika.dissanayake" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
-                <img src={process.env.PUBLIC_URL + '/facebook.png'} alt="Facebook" className="s-icon" />
+                <img src={process.env.PUBLIC_URL + '/facebook1.png'} alt="Facebook" className="s-icon" />
               </a>
               <a className="s" href="https://github.com/dewmiwickramasinghe" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
                 <img src={process.env.PUBLIC_URL + '/github.png'} alt="GitHub" className="s-icon" />
               </a>
               <a className="s" href="https://www.instagram.com/dewsankalpana/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-                <img src={process.env.PUBLIC_URL + '/instergram.jpeg'} alt="Instagram" className="s-icon" />
+                <img src={process.env.PUBLIC_URL + '/instergram1.jpeg'} alt="Instagram" className="s-icon" />
               </a>
               <a className="s" href="https://www.linkedin.com/in/dewmi-wickramasinghe-24b235367/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
                 <img src={process.env.PUBLIC_URL + '/linkdin.png'} alt="LinkedIn" className="s-icon" />
