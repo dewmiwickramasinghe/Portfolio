@@ -1,0 +1,113 @@
+.hero{
+  min-height:calc(100vh - 72px);
+  display:flex;
+  align-items:center;
+  background: radial-gradient(ellipse at 10% 20%, rgba(16,96,126,0.12), transparent 20%), linear-gradient(180deg,#06131a 0%, #071426 60%);
+  color:#e6f7fb;
+  padding:40px 48px;
+}
+.hero-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+}
+.hero-left{
+  flex:1;
+  max-width:640px;
+}
+.hello{
+  color:#cfeefc;
+  margin:0 0 10px 0;
+}
+.name{
+  font-size:44px;
+  margin:0 0 6px 0;
+  font-weight:800;
+}
+.role{
+  font-size:20px;
+  margin:0 0 18px 0;
+}
+.role span{color:#4fd1c5}
+.role .end{color:#61dafb}
+.desc{
+  max-width:520px;
+  color: #bfe9ef;
+}
+.actions{
+  margin-top:20px;
+  display:flex;
+  align-items:center;
+}
+.btn-primary{
+  background: linear-gradient(90deg,#0bd3c4,#4f6bf6);
+  border:none;
+  color:#012;
+  padding:12px 22px;
+  border-radius:28px;
+  cursor:pointer;
+  font-weight:700;
+  margin-right:18px;
+}
+.socials{display:flex; gap:10px}
+.s{
+  display:inline-flex;
+  width:50px;
+  height:50px;
+  align-items:center;
+  justify-content:center;
+  color:#cfeefc;
+  object-fit: cover;
+}
+.s img{
+  width:40px;
+  height:40px;
+  display:block;
+}
+
+.hero-right{
+  width:380px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.profile-ring{
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+  background: conic-gradient(from 120deg, #ff6ec7, #8a7bff, #2de7d8, #ff6ec7);
+  position:relative;
+  box-shadow: 0 8px 40px rgba(32,240,218,0.08);
+}
+.profile-ring img{
+  width:92%;
+  height:92%;
+  object-fit:cover;
+  border-radius:50%;
+  border:6px solid rgba(8,15,26,0.9);
+}
+.profile-ring::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  filter:blur(28px);
+  background: radial-gradient(circle at 30% 30%, rgba(129,55,255,0.35), transparent 20%), radial-gradient(circle at 70% 70%, rgba(20,235,200,0.28), transparent 20%);
+  z-index:-1;
+}
+
+@media (max-width:880px){
+  .hero-inner{flex-direction:column; gap:28px}
+  .hero-right{width:100%}
+}
