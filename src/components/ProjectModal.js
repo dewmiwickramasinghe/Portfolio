@@ -58,7 +58,18 @@ export default function ProjectModal({ project, onClose }) {
               <h4 className="gallery-title">Project Screenshots</h4>
               <div className="gallery-images">
                 {project.gallery.map((img, idx) => (
-                  <img key={idx} src={img.startsWith('http') ? img : process.env.PUBLIC_URL + '/' + img} alt={`${project.title} ${idx}`} onError={(e) => {e.currentTarget.style.display = 'none'}} onClick={() => setSelectedImage(img.startsWith('http') ? img : process.env.PUBLIC_URL + '/' + img)} style={{cursor: 'pointer'}} />
+                  <div key={idx} className="gallery-image-wrapper">
+                    <img 
+                      src={img}
+                      alt={`${project.title} ${idx}`} 
+                      onError={(e) => {
+                        console.warn(`Failed to load image: ${img}`);
+                        e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="280" height="350"%3E%3Crect fill="%23333" width="280" height="350"/%3E%3Ctext x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23999" font-size="14"%3EImage not available%3C/text%3E%3C/svg%3E';
+                      }} 
+                      onClick={() => setSelectedImage(img)} 
+                      style={{cursor: 'pointer'}} 
+                    />
+                  </div>
                 ))}
               </div>
             </div>
