@@ -19,8 +19,15 @@
 .about-aside img{width:100%;height:auto;border-radius:12px;border:6px solid rgba(8,15,26,0.85);object-fit:cover}
 
 /* reveal animation */
-.about-section{opacity:0;transform:translateY(18px);transition:opacity 560ms ease, transform 560ms ease}
-.about-section.visible{opacity:1;transform:none}
+.about-section{
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.about-section.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
 
 @media (max-width:880px){
   .about-grid{flex-direction:column}

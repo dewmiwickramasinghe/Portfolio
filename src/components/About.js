@@ -17,7 +17,7 @@ export default function About() {
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -29,13 +29,12 @@ export default function About() {
         <h2>About Me</h2>
         <div className="about-grid">
           <div className="about-text">
-            <p>• I’m Dewmi Wickramasinghe, an undergraduate pursuing a BSc (Hons) in Information Technology specializing in Software Engineering at SLIIT. I’m passionate about building meaningful digital solutions that improve everyday life.</p>
-            <p>• I enjoy working across both web and mobile development, with hands-on experience in full-stack MERN applications, Kotlin-based Android apps, and Java/JSP web systems.</p>
-            <p>• I’ve developed projects such as a Pet Care Center Management System, a Personal Finance Tracker mobile app, and an E-commerce platform, focusing on real-world problem solving, clean UI/UX, and reliable functionality.</p>
-            <p>• I love exploring frontend design, backend logic, and database management, and I’m constantly learning new technologies to expand my skills.</p>
-            <p>• I’m also interested in financial systems, automation, and improving efficiency through well-designed software features like order handling, budget tracking, and report generation.</p>
-            <p>• My goal is to continue growing as a developer by working on impactful projects, collaborating with teams, and building software that is both efficient and user-focused.</p>
-            <p>• When I’m not coding, I spend time learning new tools, improving UI designs, and exploring ways to make applications more intuitive and user-friendly.</p>
+            <p>• I’m Dewmi Wickramasinghe, a Software Engineering undergraduate at SLIIT with six months of industry experience as a Web Developer Intern at XESS Global (Pvt) Ltd.</p>
+            <p>• I have experience working across CRM, fleet management, attendance, asset management, APIs, dashboards, event systems, and corporate websites.</p>
+            <p>• My strengths include requirements analysis, business workflow understanding, functional and non-functional requirements, acceptance criteria, QA/testing, root-cause analysis, and technical documentation.</p>
+            <p>• I connect business needs with technical solutions by reviewing existing workflows, data flows, system behaviour, and project requirements before implementation.</p>
+            <p>• I am proficient in Agile and SDLC concepts and have hands-on experience using Jira, Trello, ClickUp, Git, GitHub, Postman, Figma, and REST APIs.</p>
+            <p>• I am seeking opportunities in Project Management, Project Coordination, or Business Analysis where I can contribute strong analytical thinking, communication, collaboration, and problem-solving skills.</p>
           </div>
           <div className="about-aside">
             <img src={process.env.PUBLIC_URL + '/aboutme.jpg'} alt="Dewmi Wickramasinghe" />

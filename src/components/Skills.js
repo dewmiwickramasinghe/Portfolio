@@ -25,6 +25,10 @@ const SKILLS = [
   { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
   { name: 'Android Studio', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg' },
   { name: 'Eclipse', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg' },
+  { name: 'Jira', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg' },
+  { name: 'Trello', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-original.svg' },
+  { name: 'Requirements Analysis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/confluence/confluence-original.svg' },
+  { name: 'Agile / SDLC', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg' },
 ];
 
 export default function Skills() {
@@ -43,7 +47,7 @@ export default function Skills() {
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
     );
     obs.observe(el);
     return () => obs.disconnect();

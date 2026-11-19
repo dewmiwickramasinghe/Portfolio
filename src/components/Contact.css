@@ -1,7 +1,29 @@
 .contact-section {
   padding: 80px 20px;
   background: #0a1423;
+  /* scroll reveal — hidden by default */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
 }
+.contact-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* stagger the info cards */
+.contact-section.visible .info-card {
+  opacity: 1;
+  transform: none;
+}
+.info-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease, background 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+.contact-section.visible .info-card:nth-child(1) { transition-delay: 0.1s; }
+.contact-section.visible .info-card:nth-child(2) { transition-delay: 0.2s; }
+.contact-section.visible .info-card:nth-child(3) { transition-delay: 0.3s; }
 
 .contact-inner {
   max-width: 1000px;

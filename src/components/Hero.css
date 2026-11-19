@@ -2,11 +2,67 @@
   min-height:calc(100vh - 72px);
   display:flex;
   align-items:center;
-  background: radial-gradient(ellipse at 10% 20%, rgba(16,96,126,0.12), transparent 20%), linear-gradient(180deg,#06131a 0%, #071426 60%);
+  position: relative;
+  overflow: hidden;
+  /* Deep cosmic base */
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(10,60,100,0.55) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 10%, rgba(80,20,120,0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 90%, rgba(5,100,80,0.3) 0%, transparent 45%),
+    linear-gradient(145deg, #020b14 0%, #040d1f 40%, #060818 100%);
   color:#e6f7fb;
   padding:40px 48px;
 }
-.hero-inner{
+
+/* Animated canvas sits behind all content */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Nebula shimmer overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 25%, rgba(0,220,200,0.07) 0%, transparent 40%),
+    radial-gradient(ellipse at 85% 75%, rgba(130,0,255,0.09) 0%, transparent 40%);
+  animation: nebula-pulse 8s ease-in-out infinite alternate;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Scanline texture */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,220,200,0.015) 3px,
+    rgba(0,220,200,0.015) 4px
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes nebula-pulse {
+  0%   { opacity: 0.6; transform: scale(1) rotate(0deg); }
+  50%  { opacity: 1;   transform: scale(1.04) rotate(1deg); }
+  100% { opacity: 0.7; transform: scale(1.01) rotate(-1deg); }
+}
+
+/* Make all hero children sit above the canvas */
+.hero-inner {
+  position: relative;
+  z-index: 2;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -17,6 +73,18 @@
 .hero-left{
   flex:1;
   max-width:640px;
+  animation: fade-up 0.9s ease both;
+}
+.hero-right{
+  width:380px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation: fade-up 1.2s ease both;
+}
+@keyframes fade-up {
+  from { opacity:0; transform: translateY(28px); }
+  to   { opacity:1; transform: translateY(0); }
 }
 .hello{
   color:#cfeefc;
@@ -26,6 +94,16 @@
   font-size:44px;
   margin:0 0 6px 0;
   font-weight:800;
+  background: linear-gradient(90deg, #e0f7ff, #4fd1c5, #a78bfa, #e0f7ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-text 4s linear infinite;
+}
+@keyframes shimmer-text {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 .role{
   font-size:20px;
@@ -45,12 +123,18 @@
 .btn-primary{
   background: linear-gradient(90deg,#0bd3c4,#4f6bf6);
   border:none;
-  color:#012;
+  color:#fff;
   padding:12px 22px;
   border-radius:28px;
   cursor:pointer;
   font-weight:700;
   margin-right:18px;
+  transition: box-shadow 0.3s, transform 0.2s;
+  box-shadow: 0 0 0 rgba(79,209,197,0);
+}
+.btn-primary:hover {
+  box-shadow: 0 0 20px rgba(11,211,196,0.6), 0 0 40px rgba(79,107,246,0.3);
+  transform: translateY(-2px);
 }
 .socials{display:flex; gap:10px}
 .s{
@@ -68,12 +152,6 @@
   display:block;
 }
 
-.hero-right{
-  width:380px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
 .profile-ring{
   width:320px;
   height:320px;
@@ -81,17 +159,23 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:10px;
-  background: conic-gradient(from 120deg, #ff6ec7, #8a7bff, #2de7d8, #ff6ec7);
+  padding:5px;
+  /* Static gradient border — no rotation */
+  background: conic-gradient(from 120deg, #ff6ec7, #8a7bff, #2de7d8, #61dafb, #ff6ec7);
   position:relative;
-  box-shadow: 0 8px 40px rgba(32,240,218,0.08);
+  box-shadow:
+    0 0 40px rgba(32,240,218,0.18),
+    0 0 80px rgba(130,55,255,0.12);
+  /* Only the glow behind pulses — image stays perfectly still */
 }
 .profile-ring img{
-  width:92%;
-  height:92%;
+  width:100%;
+  height:100%;
   object-fit:cover;
   border-radius:50%;
-  border:6px solid rgba(8,15,26,0.9);
+  border:5px solid #060818;
+  display:block;
+  /* NO rotation */
 }
 .profile-ring::after{
   content:'';
@@ -99,12 +183,19 @@
   left:50%;
   top:50%;
   transform:translate(-50%,-50%);
-  width:420px;
-  height:420px;
+  width:440px;
+  height:440px;
   border-radius:50%;
-  filter:blur(28px);
-  background: radial-gradient(circle at 30% 30%, rgba(129,55,255,0.35), transparent 20%), radial-gradient(circle at 70% 70%, rgba(20,235,200,0.28), transparent 20%);
+  filter:blur(36px);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(129,55,255,0.4), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(20,235,200,0.32), transparent 40%);
   z-index:-1;
+  animation: glow-pulse 4s ease-in-out infinite alternate;
+}
+@keyframes glow-pulse {
+  0%  { opacity: 0.6; transform: translate(-50%,-50%) scale(0.95); }
+  100%{ opacity: 1;   transform: translate(-50%,-50%) scale(1.08); }
 }
 
 @media (max-width:880px){
